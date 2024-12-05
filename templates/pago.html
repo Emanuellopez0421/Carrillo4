@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagar Reserva</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='pago_estilos.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Pagar Reserva</h1>
+
+        <h3>Tarjetas Aceptadas</h3>
+        <div class="tarjetas">
+            <img src="{{ url_for('static', filename='visa.png') }}" alt="Visa">
+            <img src="{{ url_for('static', filename='mastercard.png') }}" alt="MasterCard">
+            <img src="{{ url_for('static', filename='amex.png') }}" alt="American Express">
+            <img src="{{ url_for('static', filename='santander.png') }}" alt="Santander">
+            <img src="{{ url_for('static', filename='banamex.png') }}" alt="Banamex">
+            <img src="{{ url_for('static', filename='hsbc.jpg') }}" alt="HSBC">
+        </div>
+
+        <!-- Información de la Reserva -->
+        <div class="card">
+            <h2>Detalles de la Reserva</h2>
+            <p><strong>Reserva ID:</strong> {{ reserva_id }}</p>
+            <p><strong>Monto a Pagar:</strong> ${{ precio }}</p>
+
+            <h3>Información de Pago</h3>
+            <form method="POST" action="{{ url_for('app_routes.pago', reserva_id=reserva_id) }}">
+                <div class="form-group">
+                    <label for="metodo_pago"><strong>Método de Pago:</strong></label>
+                    <select id="metodo_pago" name="metodo_pago" required>
+                        <option value="" disabled selected>Seleccione un método de pago</option>
+                        <option value="tarjeta_credito">Tarjeta de Crédito</option>
+                        <option value="tarjeta_debito">Tarjeta de Débito</option>
+                        <option value="transferencia">Transferencia Bancaria</option>
+                        <option value="paypal">PayPal</option>
+                    </select>
+                </div>
+
+                <!-- Información de la Tarjeta -->
+                <div class="form-group">
+                    <label for="numero_tarjeta"><strong>Número de Tarjeta:</strong></label>
+                    <input type="text" id="numero_tarjeta" name="numero_tarjeta" maxlength="16" pattern="\d{16}" placeholder="Ingrese los 16 dígitos de su tarjeta" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ultimos_cuatro_digitos"><strong>Últimos 4 Dígitos:</strong></label>
+                    <input type="text" id="ultimos_cuatro_digitos" name="ultimos_cuatro_digitos" maxlength="4" pattern="\d{4}" placeholder="Últimos 4 dígitos" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="fecha_exp"><strong>Fecha de Expiración:</strong></label>
+                    <input type="text" id="fecha_exp" name="fecha_exp" maxlength="5" placeholder="MM/AA" required oninput="formatearFechaExpiracion(this)">
+                </div>
+
+                <div class="form-group">
+                    <label for="cvv"><strong>CVV:</strong></label>
+                    <input type="password" id="cvv" name="cvv" maxlength="3" pattern="\d{3}" placeholder="Código de seguridad (CVV)" required>
+                </div>
+
+                <button type="submit" class="btn-primary">Pagar</button>
+                <a href="{{ url_for('app_routes.cliente_dashboard') }}" class="btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function formatearFechaExpiracion(campo) {
+            let valor = campo.value.replace(/[^0-9]/g, ''); // Elimina caracteres no numéricos
+            if (valor.length >= 3) {
+                campo.value = valor.slice(0, 2) + '/' + valor.slice(2, 4); // Añade la barra automáticamente
+            } else {
+                campo.value = valor; // Solo mantiene los números ingresados
+            }
+        }
+    </script>
+</body>
+</html>

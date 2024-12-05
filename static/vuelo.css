@@ -1,0 +1,107 @@
+/* Fondo general */
+body {
+    background: linear-gradient(135deg, #74ebd5, #acb6e5); /* Degradado azul y verde */
+    font-family: 'Poppins', sans-serif; /* Fuente moderna */
+    color: #34495e; /* Gris oscuro */
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Título principal */
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2c3e50; /* Azul oscuro */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra en el texto */
+    margin-bottom: 30px;
+}
+
+/* Tarjeta del formulario */
+.card {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px;
+}
+
+/* Etiquetas */
+label {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Campos de entrada */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus {
+    border-color: #3498db; /* Azul brillante */
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none;
+}
+
+/* Botones */
+button {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+button.btn-primary {
+    background-color: #3498db; /* Azul brillante */
+    color: #ffffff;
+}
+
+button.btn-primary:hover {
+    background-color: #2980b9; /* Azul más oscuro */
+    transform: translateY(-2px); /* Efecto de elevación */
+}
+
+button.btn-secondary {
+    background-color: #7f8c8d; /* Gris */
+    color: #ffffff;
+}
+
+button.btn-secondary:hover {
+    background-color: #606c76; /* Gris más oscuro */
+    transform: translateY(-2px);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    button {
+        width: 100%;
+    }
+}

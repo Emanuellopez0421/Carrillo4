@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Nueva Recomendación</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='recomendaciones.css') }}">
+</head>
+<body>
+    <div class="fondo-innovador">
+        <div class="container py-5">
+            <div class="shadow-lg p-5 mb-5 bg-white rounded">
+                <h1 class="text-center text-primary">Crear Nueva Recomendación</h1>
+                <p class="text-muted text-center">Completa los datos para agregar una recomendación</p>
+
+                <div class="card mt-4 p-4 shadow-sm border-0">
+                    <form method="POST" enctype="multipart/form-data">
+                        <!-- Campo: Título -->
+                        <div class="form-group">
+                            <label for="titulo" class="font-weight-bold">Título de la Recomendación:</label>
+                            <input type="text" id="titulo" name="titulo" class="form-control" placeholder="Ejemplo: Viaja a Cancún" required>
+                        </div>
+
+                        <!-- Campo: Descripción -->
+                        <div class="form-group">
+                            <label for="descripcion" class="font-weight-bold">Descripción:</label>
+                            <textarea id="descripcion" name="descripcion" class="form-control" rows="4" placeholder="Escribe aquí los detalles de esta recomendación." required></textarea>
+                        </div>
+
+                        <!-- Campo: Selección de Vuelo -->
+                        <div class="form-group">
+                            <label for="vuelo_id" class="font-weight-bold">Selecciona un Vuelo:</label>
+                            <select id="vuelo_id" name="vuelo_id" class="form-control" onchange="actualizarLugarLlegada(this)" required>
+                                <option value="" disabled selected>Selecciona un vuelo</option>
+                                {% for vuelo in vuelos %}
+                                <option value="{{ vuelo.vuelo_id }}" data-llegada="{{ vuelo.llegada }}">{{ vuelo.vuelo_id }} - {{ vuelo.salida }} → {{ vuelo.llegada }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <!-- Campo: Lugar de Llegada -->
+                        <div class="form-group">
+                            <label for="lugar_llegada" class="font-weight-bold">Lugar de Llegada:</label>
+                            <input type="text" id="lugar_llegada" name="lugar_llegada" class="form-control" readonly>
+                        </div>
+
+                        <!-- Campo: Subir Imagen -->
+                        <div class="form-group">
+                            <label for="imagen" class="font-weight-bold">Subir Imagen:</label>
+                            <input type="file" id="imagen" name="imagen" class="form-control-file" accept="image/*" required>
+                        </div>
+
+                        <!-- Botones -->
+                        <div class="d-flex justify-content-between mt-4">
+                            <button type="submit" class="btn btn-primary px-4">Guardar Recomendación</button>
+                            <a href="{{ url_for('app_routes.admin_dashboard') }}" class="btn btn-secondary px-4">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function actualizarLugarLlegada(select) {
+            const lugarLlegada = document.getElementById('lugar_llegada');
+            const selectedOption = select.options[select.selectedIndex];
+            if (selectedOption) {
+                lugarLlegada.value = selectedOption.getAttribute('data-llegada');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel del Cliente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='cliente_dashboard.css') }}">
+</head>
+<body>
+    <div class="container">
+
+        <!-- Encabezado -->
+        <div class="header">
+            <div class="user-info">
+                <img src="{{ url_for('static', filename='user.png') }}" alt="Imagen de Usuario" class="user-image">
+            </div>
+            <div class="actions">
+                <div class="button-row">
+                    <a href="{{ url_for('app_routes.mostrar_promociones_cliente') }}" class="btn btn-info">Ver Promociones</a>
+                    <a href="{{ url_for('app_routes.ver_recomendaciones') }}" class="btn btn-warning">Ver Recomendaciones</a>
+                </div>
+                <div class="button-row">
+                    <a href="{{ url_for('app_routes.mis_reservas') }}" class="btn btn-primary">Mis Reservas</a>
+                    <a href="{{ url_for('app_routes.cerrar_sesion') }}" class="btn btn-danger">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mensajes Flash -->
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+            <div class="flash flash-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        <!-- Formulario de Búsqueda -->
+        <div class="card">
+            <h3>Buscar Vuelo</h3>
+            <form method="POST" action="{{ url_for('app_routes.buscar_vuelo') }}">
+                <div class="form-row">
+                    <label for="salida">Ciudad de Salida:</label>
+                    <input type="text" id="salida" name="salida" required>
+                </div>
+                <div class="form-row">
+                    <label for="llegada">Ciudad de Llegada:</label>
+                    <input type="text" id="llegada" name="llegada" required>
+                </div>
+                <div class="form-row">
+                    <label for="tipo_vuelo">Tipo de Vuelo:</label>
+                    <select id="tipo_vuelo" name="tipo_vuelo">
+                        <option value="">Todos</option>
+                        <option value="ida">Ida</option>
+                        <option value="redondo">Redondo</option>
+                        <option value="directo">Directo</option>
+                        <option value="escalas">Con Escalas</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="modo_vuelo">Modo de Vuelo:</label>
+                    <select id="modo_vuelo" name="modo_vuelo">
+                        <option value="">Todos</option>
+                        <option value="comercial">Comercial</option>
+                        <option value="privado">Privado</option>
+                        <option value="publico">Público</option>
+                        <option value="ejecutivo">Ejecutivo</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">Buscar</button>
+            </form>
+        </div>
+
+        <!-- Resultados de la Búsqueda -->
+        {% if busqueda_realizada %}
+        {% if vuelos %}
+        <div class="results">
+            <h3>Vuelos Disponibles</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Vuelo ID</th>
+                        <th>Salida</th>
+                        <th>Llegada</th>
+                        <th>Fecha de Salida</th>
+                        <th>Hora de Salida</th>
+                        <th>Fecha de Llegada</th>
+                        <th>Hora de Llegada</th>
+                        <th>Tipo de Vuelo</th>
+                        <th>Modo de Vuelo</th>
+                        <th>Precio</th>
+                        <th>Seleccionar Asiento</th>
+                        <th>Seleccionar Vuelo</th>
+                        <th>Asiento Elegido</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for vuelo in vuelos %}
+                    <tr>
+                        <td>{{ vuelo.id }}</td>
+                        <td>{{ vuelo.vuelo_id }}</td>
+                        <td>{{ vuelo.salida }}</td>
+                        <td>{{ vuelo.llegada }}</td>
+                        <td>{{ vuelo.fecha_salida }}</td>
+                        <td>{{ vuelo.hora_salida }}</td>
+                        <td>{{ vuelo.fecha_llegada }}</td>
+                        <td>{{ vuelo.hora_llegada }}</td>
+                        <td>{{ vuelo.tipo_vuelo }}</td>
+                        <td>{{ vuelo.modo_vuelo }}</td>
+                        <td>${{ vuelo.precio }}</td>
+                        <td>
+                            <a href="{{ url_for('app_routes.seleccionar_asientos', vuelo_id=vuelo.vuelo_id) }}" class="btn btn-secondary">Seleccionar Asiento</a>
+                        </td>
+                        <td>
+                            {% if session.get('asiento_seleccionado') and session.get('asiento_seleccionado_vuelo_id') == vuelo.vuelo_id %}
+                            <a href="{{ url_for('app_routes.seleccionar_vuelo', vuelo_id=vuelo.vuelo_id) }}" class="btn btn-success">Seleccionar Vuelo</a>
+                            {% else %}
+                            <span class="btn-disabled">Seleccionar Vuelo</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if session.get('asiento_seleccionado') and session.get('asiento_seleccionado_vuelo_id') == vuelo.vuelo_id %}
+                            {{ session.get('asiento_seleccionado') }}
+                            {% else %}
+                            No seleccionado
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="notification">
+            <p>No se encontraron vuelos con los criterios seleccionados.</p>
+        </div>
+        {% endif %}
+        {% endif %}
+
+        <!-- Botón de regresar -->
+        <div class="back">
+            <a href="{{ url_for('app_routes.bienvenida_cliente') }}" class="btn">Regresar</a>
+        </div>
+
+    </div>
+</body>
+</html>

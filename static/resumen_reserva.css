@@ -1,0 +1,95 @@
+/* Fondo general */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #b3e5fc, #81c784); /* Gradiente azul y verde pastel */
+    color: #2d4059;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #2d4059; /* Azul oscuro */
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Tarjeta de detalles */
+.card {
+    background: #e8f5e9; /* Verde pastel claro */
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    color: #2d4059;
+}
+
+.card-header {
+    background-color: #42a5f5; /* Azul pastel */
+    padding: 15px;
+    border-radius: 12px 12px 0 0;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+}
+
+.card-body p {
+    font-size: 1.2em;
+    margin: 8px 0;
+    color: #2d4059;
+}
+
+.card-body p strong {
+    color: #1b5e20; /* Verde oscuro */
+}
+
+/* Botón */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background: #64b5f6; /* Azul pastel */
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(100, 181, 246, 0.4);
+    transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: #42a5f5; /* Azul más intenso */
+    box-shadow: 0 8px 16px rgba(66, 165, 245, 0.6);
+    transform: scale(1.05);
+}
+
+/* Espaciado */
+.mt-5 {
+    margin-top: 40px;
+}
+
+.mt-4 {
+    margin-top: 20px;
+}
+
+/* Sombra ligera */
+.shadow-sm {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

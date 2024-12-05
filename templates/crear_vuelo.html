@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Nuevo Vuelo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vuelo.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Crear Nuevo Vuelo</h1>
+
+        <div class="card mt-4 p-4 shadow-sm">
+            <!-- Mensaje informativo -->
+            <p class="text-muted text-center">Completa el siguiente formulario para agregar un nuevo vuelo y sus asientos.</p>
+
+            <form method="POST" action="{{ url_for('app_routes.crear_vuelo') }}">
+                <!-- Información del Vuelo -->
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="vuelo_id">ID del Vuelo:</label>
+                        <input type="number" class="form-control" id="vuelo_id" name="vuelo_id" placeholder="Ej. 101" min="1" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="operador">Operador:</label>
+                        <input type="text" class="form-control" id="operador" name="operador" placeholder="Ej. Aerolíneas Carrillo" maxlength="50" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="matricula">Matrícula:</label>
+                        <input type="text" class="form-control" id="matricula" name="matricula" placeholder="Ej. XA-1234" maxlength="10" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="precio">Precio:</label>
+                        <input type="number" class="form-control" id="precio" name="precio" placeholder="Ej. 5000" min="1" step="0.01" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="salida">Salida:</label>
+                        <input type="text" class="form-control" id="salida" name="salida" placeholder="Ej. Ciudad de México" maxlength="50" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="llegada">Llegada:</label>
+                        <input type="text" class="form-control" id="llegada" name="llegada" placeholder="Ej. Guadalajara" maxlength="50" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="fecha_salida">Fecha de Salida:</label>
+                        <input type="date" class="form-control" id="fecha_salida" name="fecha_salida" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="hora_salida">Hora de Salida:</label>
+                        <input type="time" class="form-control" id="hora_salida" name="hora_salida" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="fecha_llegada">Fecha de Llegada:</label>
+                        <input type="date" class="form-control" id="fecha_llegada" name="fecha_llegada" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="hora_llegada">Hora de Llegada:</label>
+                        <input type="time" class="form-control" id="hora_llegada" name="hora_llegada" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="tipo_vuelo">Tipo de Vuelo:</label>
+                        <select class="form-control" id="tipo_vuelo" name="tipo_vuelo" required>
+                            {% for tipo in tipos_vuelo %}
+                                <option value="{{ tipo }}">{{ tipo|capitalize }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="modo_vuelo">Modo de Vuelo:</label>
+                        <select class="form-control" id="modo_vuelo" name="modo_vuelo" required>
+                            {% for modo in modos_vuelo %}
+                                <option value="{{ modo }}">{{ modo|capitalize }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Asientos -->
+                <div class="form-group">
+                    <label for="asientos_disponibles">Número de Asientos:</label>
+                    <input type="number" class="form-control" id="asientos_disponibles" name="asientos_disponibles" placeholder="Ej. 150" min="1" required>
+                    <small class="form-text text-muted">Ingrese la cantidad de asientos disponibles para este vuelo. Se generarán automáticamente.</small>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary">Crear Vuelo</button>
+                    <a href="{{ url_for('app_routes.admin_dashboard') }}" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts de Bootstrap -->
+    <script src="{{ url_for('static', filename='cliente_dashboard.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

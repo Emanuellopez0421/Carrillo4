@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Cierre de Sesión</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">¿Estás seguro de que deseas cerrar sesión?</h2>
+        <div class="text-center mt-4">
+            <a href="{{ url_for('app_routes.cerrar_sesion_confirmado') }}" class="btn btn-danger">Cerrar Sesión</a>
+            <a href="{{ url_for('app_routes.cliente_dashboard') }}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </div>
+</body>
+</html>

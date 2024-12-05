@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccionar Vuelo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='seleccionar_vuelo.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Confirmar Vuelo</h1>
+        <div class="card mt-4 p-4 shadow-sm">
+            <h3>Detalles del Vuelo</h3>
+            <p><strong>Salida:</strong> {{ vuelo.salida }}</p>
+            <p><strong>Llegada:</strong> {{ vuelo.llegada }}</p>
+            <p><strong>Fecha de Salida:</strong> {{ vuelo.fecha_salida }}</p>
+            <p><strong>Hora de Salida:</strong> {{ vuelo.hora_salida }}</p>
+            <p><strong>Fecha de Llegada:</strong> {{ vuelo.fecha_llegada }}</p>
+            <p><strong>Hora de Llegada:</strong> {{ vuelo.hora_llegada }}</p>
+            <p><strong>Aerolínea:</strong> Aerolínea Carrillo</p>
+            <p><strong>Tipo de Vuelo:</strong> {{ vuelo.tipo_vuelo }}</p>
+            <p><strong>Modo de Vuelo:</strong> {{ vuelo.modo_vuelo }}</p>
+            <p><strong>Precio:</strong> ${{ vuelo.precio }}</p>
+            <p><strong>Asiento Seleccionado:</strong> {{ numero_asiento }}</p>
+
+            <form method="POST" action="{{ url_for('app_routes.confirmar_reserva', vuelo_id=vuelo.vuelo_id, asiento_id=asiento_id) }}">
+                <button type="submit" class="btn btn-primary">Confirmar Vuelo</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

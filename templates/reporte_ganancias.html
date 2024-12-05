@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Ganancias</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='reporte_ganancias.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Reporte de Ganancias</h1>
+        
+        <!-- Tabla -->
+        {% if ganancias %}
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Fecha</th>
+                    <th>Total Ganancias</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for fecha, monto in ganancias %}
+                <tr>
+                    <td>{{ fecha }}</td>
+                    <td>${{ monto }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Gráfico -->
+        <canvas id="gananciasChart" width="800" height="400" style="margin-top: 2rem;"></canvas>
+        {% else %}
+        <p class="text-center">No hay datos de ganancias disponibles para mostrar.</p>
+        {% endif %}
+
+        <!-- Botón de regresar -->
+        <button class="btn btn-danger mt-3" onclick="window.history.back()">Regresar</button>
+    </div>
+
+    {% if ganancias %}
+    <script>
+        // Convertir los datos de ganancias en etiquetas y valores
+        const labels = {{ ganancias | map(attribute=0) | list | tojson }};
+        const data = {{ ganancias | map(attribute=1) | list | tojson }};
+
+        // Debug: Imprimir datos en la consola del navegador
+        console.log("Etiquetas (Fechas):", labels);
+        console.log("Datos (Ganancias):", data);
+
+        // Crear el gráfico
+        const ctx = document.getElementById('gananciasChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Ganancias Totales',
+                    data: data,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)', // Azul translúcido
+                    borderColor: 'rgba(54, 162, 235, 1)', // Azul fuerte
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    {% endif %}
+</body>
+</html>

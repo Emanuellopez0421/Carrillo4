@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Vuelo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/confirmar_vuelo.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Confirmar Vuelo</h1>
+
+        <div class="card mt-4">
+            <div class="card-header bg-primary text-white">
+                Detalles del Vuelo
+            </div>
+            <div class="card-body">
+                <p><strong>Salida:</strong> {{ vuelo.salida }}</p>
+                <p><strong>Llegada:</strong> {{ vuelo.llegada }}</p>
+                <p><strong>Fecha y Hora de Salida:</strong> {{ vuelo.fecha_salida }} {{ vuelo.hora_salida }}</p>
+                <p><strong>Fecha y Hora de Llegada:</strong> {{ vuelo.fecha_llegada }} {{ vuelo.hora_llegada }}</p>
+                <p><strong>Precio:</strong> ${{ vuelo.precio }}</p>
+                <p><strong>Asiento Seleccionado:</strong> {{ vuelo.numero_asiento }}</p>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <!-- Redirige a confirmar_reserva -->
+            <form method="POST" action="{{ url_for('app_routes.confirmar_reserva') }}">
+                <input type="hidden" name="vuelo_id" value="{{ session['vuelo_seleccionado'] }}">
+                <input type="hidden" name="asiento_id" value="{{ session['asiento_seleccionado'] }}">
+                <button type="submit" class="btn btn-success">Confirmar Reserva</button>
+            </form>
+            <a href="{{ url_for('app_routes.buscar_vuelo') }}" class="btn btn-secondary mt-2">Cancelar</a>
+        </div>
+    </div>
+</body>
+</html>

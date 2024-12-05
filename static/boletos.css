@@ -1,0 +1,143 @@
+/* boletos.css */
+
+/* General */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Ticket Container */
+.ticket {
+    background-color: #ffffff;
+    width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
+/* Header */
+.ticket-header {
+    display: flex;
+    align-items: center;
+    background-color: #0077cc;
+    color: #ffffff;
+    padding: 20px;
+}
+
+.logo img {
+    width: 80px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.header-info {
+    text-align: left;
+}
+
+.title {
+    font-size: 1.8em;
+    margin: 0;
+}
+
+.flight-tagline {
+    font-size: 0.9em;
+    margin: 5px 0 0;
+}
+
+/* Body */
+.ticket-body {
+    padding: 20px;
+}
+
+.flight-info p {
+    margin: 8px 0;
+    font-size: 1em;
+    color: #333;
+}
+
+.flight-info p strong {
+    font-weight: bold;
+}
+
+/* Footer */
+.ticket-footer {
+    background-color: #f8f9fa;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #ddd;
+}
+
+.barcode-section {
+    text-align: center;
+}
+
+.barcode {
+    width: 150px;
+    height: auto;
+    margin-top: 10px;
+}
+
+.thank-you-section {
+    text-align: right;
+}
+
+.thank-you-section p {
+    margin: 0;
+}
+
+.small-text {
+    font-size: 0.85em;
+    color: #888;
+}
+
+/* Buttons */
+.ticket-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #e9ecef;
+    border-top: 1px solid #ddd;
+}
+
+.btn {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #0077cc;
+}
+
+.btn-primary:hover {
+    background-color: #005da0;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    text-align: center;
+}
+
+.btn-secondary:hover {
+    background-color: #565d65;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .ticket {
+        width: 90%;
+    }
+}

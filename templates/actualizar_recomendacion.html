@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Recomendación</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='actualizarR.css') }}">
+</head>
+<body>
+    <div class="container py-5">
+        <h1 class="text-center text-warning mb-4">Actualizar Recomendación</h1>
+        <div class="card shadow-sm p-4">
+            <form method="POST" enctype="multipart/form-data">
+                <!-- Campo: Título -->
+                <div class="form-group">
+                    <label for="titulo" class="font-weight-bold">Título:</label>
+                    <input type="text" id="titulo" name="titulo" class="form-control" value="{{ recomendacion[1] }}" required>
+                </div>
+
+                <!-- Campo: Descripción -->
+                <div class="form-group">
+                    <label for="descripcion" class="font-weight-bold">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" class="form-control" rows="5" required>{{ recomendacion[2] }}</textarea>
+                </div>
+
+                <!-- Campo: Subir Imagen -->
+                <div class="form-group">
+                    <label for="imagen" class="font-weight-bold">Actualizar Imagen:</label>
+                    <input type="file" id="imagen" name="imagen" class="form-control-file">
+                    <small class="form-text text-muted">Sube una nueva imagen si deseas reemplazar la actual.</small>
+                </div>
+
+                <!-- Botones -->
+                <div class="d-flex justify-content-between mt-4">
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <a href="{{ url_for('app_routes.recomendaciones') }}" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

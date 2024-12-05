@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrar Reservas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='r.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Administrar Reservas</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Reserva ID</th>
+                    <th>Fecha de Reserva</th>
+                    <th>Asiento</th>
+                    <th>Salida</th>
+                    <th>Llegada</th>
+                    <th>Fecha y Hora de Salida</th>
+                    <th>Fecha y Hora de Llegada</th>
+                    <th>Tipo de Vuelo</th>
+                    <th>Precio</th>
+                    <th>Estado del Pago</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reserva in reservas %}
+                <tr>
+                    <td>{{ reserva.reserva_id }}</td>
+                    <td>{{ reserva.fecha_reserva }}</td>
+                    <td>{{ reserva.numero_asiento }}</td>
+                    <td>{{ reserva.salida }}</td>
+                    <td>{{ reserva.llegada }}</td>
+                    <td>{{ reserva.fecha_salida }} {{ reserva.hora_salida }}</td>
+                    <td>{{ reserva.fecha_llegada }} {{ reserva.hora_llegada }}</td>
+                    <td>{{ reserva.tipo_vuelo }}</td>
+                    <td>${{ reserva.precio }}</td>
+                    <td class="{{ 'paid' if reserva.estado_pago == 'Pagado' else 'pending' }}">
+                        {{ reserva.estado_pago }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="text-center mt-4">
+            <a href="{{ url_for('app_routes.admin_dashboard') }}" class="btn-back">Regresar al Panel</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+body {
+    background-color: #f0f9f0; /* Fondo claro */
+    color: #3a3a3a; /* Color del texto */
+}
+
+.container {
+    background-color: #e6f7ff; /* Fondo azul claro */
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3 {
+    color: #007bff; /* Color azul para títulos */
+}
+
+.btn-primary {
+    background-color: #28a745; /* Color verde para el botón */
+    border-color: #28a745;
+}
+
+.btn-primary:hover {
+    background-color: #218838; /* Color verde más oscuro al pasar el mouse */
+    border-color: #1e7e34;
+}
+
+.form-control {
+    border-radius: 5px; /* Bordes redondeados para inputs */
+}
+
+.form-group label {
+    font-weight: bold; /* Etiquetas en negrita */
+}

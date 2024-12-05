@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Reservas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='mis_reservas.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Mis Reservas Pagadas</h1>
+        {% if reservas %}
+            <table class="reservas-table">
+                <thead>
+                    <tr>
+                        <th>ID Reserva</th>
+                        <th>Origen</th>
+                        <th>Destino</th>
+                        <th>Fecha Salida</th>
+                        <th>Hora Salida</th>
+                        <th>Fecha Llegada</th>
+                        <th>Hora Llegada</th>
+                        <th>Asiento</th>
+                        <th>Precio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reserva in reservas %}
+                        <tr>
+                            <td>{{ reserva.reserva_id }}</td>
+                            <td>{{ reserva.salida }}</td>
+                            <td>{{ reserva.llegada }}</td>
+                            <td>{{ reserva.fecha_salida }}</td>
+                            <td>{{ reserva.hora_salida }}</td>
+                            <td>{{ reserva.fecha_llegada }}</td>
+                            <td>{{ reserva.hora_llegada }}</td>
+                            <td>{{ reserva.numero_asiento }}</td>
+                            <td>${{ reserva.precio }}</td>
+                            <td>
+                                <a href="{{ url_for('app_routes.imprimir_boleto', reserva_id=reserva.reserva_id) }}" class="btn btn-primary">Imprimir Boleto</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="no-reservas">
+                <p>No tienes reservas pagadas.</p>
+            </div>
+        {% endif %}
+        <div class="text-center">
+            <a href="{{ url_for('app_routes.cliente_dashboard') }}" class="btn btn-secondary">Regresar al Panel</a>
+        </div>
+    </div>
+</body>
+</html>

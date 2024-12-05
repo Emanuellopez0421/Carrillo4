@@ -1,0 +1,93 @@
+/* Fondo y colores */
+body {
+    background-color: #e3f2fd; /* Azul cielo pastel */
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+.container {
+    background-color: #ffffff; /* Fondo blanco para el formulario */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    max-width: 500px; /* Reducción del tamaño del formulario */
+    margin-top: 80px;
+    border-top: 4px solid #007bff; /* Azul metálico */
+}
+
+h2 {
+    color: #007bff; /* Azul brillante */
+    font-size: 28px;
+    font-weight: bold;
+}
+
+p.lead {
+    font-size: 16px;
+    color: #607d8b; /* Gris suave */
+}
+
+/* Campos de formulario */
+.form-label {
+    font-size: 1rem;
+    color: #455a64; /* Gris metálico */
+}
+
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #007bff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 1rem; /* Reducir tamaño del texto */
+}
+
+/* Botón de registro */
+.btn-primary {
+    background-color: #ffeb3b; /* Amarillo brillante */
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1rem; /* Reducir tamaño del botón */
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #fbc02d; /* Amarillo más oscuro */
+}
+
+.btn-primary:active {
+    background-color: #f9a825; /* Amarillo fuerte al hacer clic */
+}
+
+/* Mensajes flash */
+.alert {
+    font-size: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.alert-danger {
+    background-color: #f8d7da; /* Rojo claro */
+    color: #721c24;
+}
+
+.alert-success {
+    background-color: #d4edda; /* Verde claro */
+    color: #155724;
+}
+
+/* Enlace */
+a {
+    color: #007bff; /* Azul brillante */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Logo y título */
+img {
+    max-width: 150px; /* Reducción del logo */
+    margin-bottom: 20px;
+}

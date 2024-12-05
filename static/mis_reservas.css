@@ -1,0 +1,75 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(120deg, #a1c4fd, #c2e9fb); /* Azul pastel y verde claro */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #34495e;
+    margin-bottom: 20px;
+}
+
+.reservas-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.reservas-table th, .reservas-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.reservas-table th {
+    background-color: #27ae60; /* Verde pastel */
+    color: white;
+}
+
+.reservas-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.reservas-table tr:hover {
+    background-color: #eafafc; /* Azul claro */
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    color: white;
+    background-color: #3498db; /* Azul pastel */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #2ecc71; /* Verde */
+}
+
+.btn-secondary {
+    background-color: #95a5a6; /* Gris */
+}
+
+.btn:hover {
+    background-color: #2980b9; /* Azul más oscuro */
+}
+
+.no-reservas {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+    padding: 20px;
+}

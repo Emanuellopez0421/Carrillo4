@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Asientos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_asientos.css') }}">
+</head>
+<body>
+    <!-- Contenedor Principal -->
+    <div class="admin-container">
+        <!-- Encabezado -->
+        <header class="header">
+            <h1>Gestión de Asientos del Vuelo</h1>
+            <a href="{{ url_for('app_routes.admin_dashboard') }}" class="btn-back">Regresar al Panel</a>
+        </header>
+
+        <!-- Tabla de Asientos -->
+        <main>
+            <h2>Asientos para el Vuelo ID: {{ vuelo_id }}</h2>
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>ID Asiento</th>
+                        <th>Número de Asiento</th>
+                        <th>Estado</th>
+                        <th>Cliente</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for asiento in asientos %}
+                    <tr>
+                        <td>{{ asiento[0] }}</td>
+                        <td>{{ asiento[1] }}</td>
+                        <td>{{ asiento[2] }}</td>
+                        <td>{{ asiento[3] if asiento[3] else "Sin asignar" }}</td>
+                        <td>
+                            <form method="POST" action="{{ url_for('app_routes.actualizar_estado_asiento', asiento_id=asiento[0]) }}">
+                                <select name="nuevo_estado" required>
+                                    <option value="Disponible" {% if asiento[2] == "Disponible" %}selected{% endif %}>Disponible</option>
+                                    <option value="Reservado" {% if asiento[2] == "Reservado" %}selected{% endif %}>Reservado</option>
+                                    <option value="Ocupado" {% if asiento[2] == "Ocupado" %}selected{% endif %}>Ocupado</option>
+                                </select>
+                                <button type="submit" class="btn-update">Actualizar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+/* Estilos para el Reporte de Ganancias */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #e3f2fd, #e1bee7);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #1e88e5;
+}
+
+/* Tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background: #1976d2;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #e3f2fd;
+}
+
+/* Canvas del gráfico */
+canvas {
+    width: 100% !important;
+    max-width: 600px;
+    height: auto !important;
+    margin: 0 auto;
+    border: 2px solid #b71c1c;
+    border-radius: 10px;
+    padding: 10px;
+    background: #f9f9f9;
+}
+
+/* Botón para interacción futura */
+button {
+    background: #1e88e5;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 1.5rem;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #1565c0;
+}
+
+/* Botón de regresar */
+button.regresar {
+    background: #b71c1c;
+    color: #ffffff;
+    font-weight: bold;
+    margin-top: 2rem;
+}
+
+button.regresar:hover {
+    background: #7f0000;
+}

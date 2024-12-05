@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vuelos Pagados</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_dashboard.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Vuelos Pagados</h1>
+
+        <!-- Tabla de Vuelos Pagados -->
+        <h3 class="mt-4">Lista de Vuelos Pagados</h3>
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID Vuelo</th>
+                    <th>Operador</th>
+                    <th>Precio</th>
+                    <th>Salida</th>
+                    <th>Llegada</th>
+                    <th>Fecha de Salida</th>
+                    <th>Fecha de Llegada</th>
+                    <th>Tipo de Vuelo</th>
+                    <th>Modo de Vuelo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vuelo in vuelos_pagados %}
+                <tr>
+                    <td>{{ vuelo[0] }}</td>
+                    <td>{{ vuelo[1] }}</td>
+                    <td>${{ vuelo[2] }}</td>
+                    <td>{{ vuelo[3] }}</td>
+                    <td>{{ vuelo[4] }}</td>
+                    <td>{{ vuelo[5] }}</td>
+                    <td>{{ vuelo[6] }}</td>
+                    <td>{{ vuelo[7] }}</td>
+                    <td>{{ vuelo[8] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Formulario de Crear Vuelo -->
+        <h3 class="mt-5">Crear Nuevo Vuelo</h3>
+        <div class="card card-body">
+            <form method="POST" action="{{ url_for('app_routes.vuelos_pagados') }}">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="vuelo_id">ID del Vuelo:</label>
+                        <input type="text" class="form-control" id="vuelo_id" name="vuelo_id" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="matricula">Matrícula:</label>
+                        <input type="text" class="form-control" id="matricula" name="matricula" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="operador">Operador:</label>
+                        <input type="text" class="form-control" id="operador" name="operador" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="precio">Precio:</label>
+                        <input type="number" class="form-control" id="precio" name="precio" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="salida">Salida:</label>
+                        <input type="text" class="form-control" id="salida" name="salida" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="llegada">Llegada:</label>
+                        <input type="text" class="form-control" id="llegada" name="llegada" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="fecha_salida">Fecha de Salida:</label>
+                        <input type="date" class="form-control" id="fecha_salida" name="fecha_salida" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="hora_salida">Hora de Salida:</label>
+                        <input type="time" class="form-control" id="hora_salida" name="hora_salida" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="fecha_llegada">Fecha de Llegada:</label>
+                        <input type="date" class="form-control" id="fecha_llegada" name="fecha_llegada" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="hora_llegada">Hora de Llegada:</label>
+                        <input type="time" class="form-control" id="hora_llegada" name="hora_llegada" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="tipo_vuelo">Tipo de Vuelo:</label>
+                        <select class="form-control" id="tipo_vuelo" name="tipo_vuelo" required>
+                            <option value="ida">Ida</option>
+                            <option value="redondo">Redondo</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="modo_vuelo">Modo de Vuelo:</label>
+                        <select class="form-control" id="modo_vuelo" name="modo_vuelo" required>
+                            <option value="comercial">Comercial</option>
+                            <option value="privado">Privado</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">Registrar Vuelo</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

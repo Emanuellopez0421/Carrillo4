@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Asientos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='gestion_asientos.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Gestión de Asientos para el Vuelo {{ vuelo.vuelo_id }}</h1>
+        <p><strong>Salida:</strong> {{ vuelo.salida }}</p>
+        <p><strong>Llegada:</strong> {{ vuelo.llegada }}</p>
+        <p><strong>Fecha de Salida:</strong> {{ vuelo.fecha_salida }}</p>
+        <p><strong>Hora de Salida:</strong> {{ vuelo.hora_salida }}</p>
+
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>ID Asiento</th>
+                    <th>Número de Asiento</th>
+                    <th>Estado</th>
+                    <th>Cliente</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for asiento in asientos %}
+                <tr>
+                    <td>{{ asiento.asiento_id }}</td>
+                    <td>{{ asiento.numero_asiento }}</td>
+                    <td>{{ asiento.estado }}</td>
+                    <td>{{ asiento.cliente or 'No asignado' }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('app_routes.seleccionar_vuelo_asientos') }}" class="btn-back">Volver al Panel</a>
+    </div>
+</body>
+</html>

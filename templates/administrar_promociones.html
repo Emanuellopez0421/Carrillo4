@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrar Promociones</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='n_promociones.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Administrar Promociones</h1>
+
+        {% if promociones %}
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Descripción</th>
+                    <th>Descuento</th>
+                    <th>Fecha de Inicio</th>
+                    <th>Fecha de Fin</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for promo in promociones %}
+                <tr>
+                    <td>{{ promo['codigo'] }}</td>
+                    <td>{{ promo['descripcion'] }}</td>
+                    <td>{{ promo['descuento'] }}%</td>
+                    <td>{{ promo['fecha_inicio'] }}</td>
+                    <td>{{ promo['fecha_fin'] }}</td>
+                    <td>
+                        <a href="{{ url_for('app_routes.editar_promocion', promocion_id=promo['promocion_id']) }}" class="btn-edit">Editar</a>
+                        <form method="POST" action="{{ url_for('app_routes.borrar_promocion', promocion_id=promo['promocion_id']) }}" style="display:inline-block;">
+                            <button type="submit" class="btn-delete">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p class="no-data">No hay promociones disponibles en este momento.</p>
+        {% endif %}
+
+        <div class="actions">
+            <a href="{{ url_for('app_routes.crear_promocion') }}" class="btn-primary">Crear Nueva Promoción</a>
+            <a href="{{ url_for('app_routes.admin_dashboard') }}" class="btn-secondary">Regresar al Panel</a>
+        </div>
+    </div>
+</body>
+</html>

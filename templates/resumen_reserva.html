@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen de Reserva</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='sumen_estilos.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Resumen de tu Reserva</h1>
+
+        <div class="summary-card">
+            <h3>Detalles del Vuelo</h3>
+            <p><strong>Reserva ID:</strong> {{ reserva.reserva_id }}</p>
+            <p><strong>Salida:</strong> {{ reserva.salida }}</p>
+            <p><strong>Destino:</strong> {{ reserva.llegada }}</p>
+            <p><strong>Fecha y Hora de Salida:</strong> {{ reserva.fecha_salida }} {{ reserva.hora_salida }}</p>
+            <p><strong>Fecha y Hora de Llegada:</strong> {{ reserva.fecha_llegada }} {{ reserva.hora_llegada }}</p>
+            <p><strong>Asiento:</strong> {{ reserva.numero_asiento }}</p>
+            <p><strong>Precio:</strong> ${{ reserva.precio }}</p>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{{ url_for('app_routes.pago', reserva_id=reserva.reserva_id) }}" class="btn-primary">Proceder al Pago</a>
+            <a href="{{ url_for('app_routes.cliente_dashboard') }}" class="btn-secondary">Cancelar</a>
+        </div>
+    </div>
+</body>
+</html>

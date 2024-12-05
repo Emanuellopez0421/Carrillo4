@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Vuelo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/buscar_vuelo.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Buscar Vuelo</h1>
+        <form method="POST" action="/buscar_vuelo" class="search-form">
+            <div class="form-group">
+                <label for="salida">Lugar de Salida:</label>
+                <input type="text" id="salida" name="salida" required>
+            </div>
+            <div class="form-group">
+                <label for="llegada">Lugar de Llegada:</label>
+                <input type="text" id="llegada" name="llegada" required>
+            </div>
+            <div class="form-group">
+                <label for="tipo_vuelo">Tipo de Vuelo:</label>
+                <select id="tipo_vuelo" name="tipo_vuelo">
+                    <option value="">Cualquiera</option>
+                    <option value="Económico">Económico</option>
+                    <option value="Ejecutivo">Ejecutivo</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="modo_vuelo">Modo de Vuelo:</label>
+                <select id="modo_vuelo" name="modo_vuelo">
+                    <option value="">Cualquiera</option>
+                    <option value="Directo">Directo</option>
+                    <option value="Con Escalas">Con Escalas</option>
+                </select>
+            </div>
+            <button type="submit" class="btn">Buscar</button>
+        </form>
+    </div>
+</body>
+</html>

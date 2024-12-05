@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recomendaciones</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='recomendaciones.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Recomendaciones de Vuelos</h1>
+        <div class="row">
+            {% for recomendacion in recomendaciones %}
+            <div class="card">
+                <!-- Ruta de la imagen desde uploads/images -->
+                <img src="{{ url_for('static', filename=recomendacion.imagen_url) }}" 
+                     alt="{{ recomendacion.titulo }}" 
+                     onerror="this.onerror=null; this.src='{{ url_for('static', filename='images/default.jpg') }}';">
+                <h3>{{ recomendacion.titulo }}</h3>
+                <p>{{ recomendacion.descripcion }}</p>
+                <p><strong>Destino:</strong> {{ recomendacion.llegada }}</p>
+                <p><strong>Precio:</strong> ${{ recomendacion.precio }}</p>
+                <a href="{{ url_for('app_routes.detalle_recomendacion', recomendacion_id=recomendacion.recomendacion_id) }}" class="btn">Ver Detalle</a>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="actions">
+            <a href="{{ url_for('app_routes.cliente_dashboard') }}" class="btn">Regresar al Panel Principal</a>
+            <a href="{{ url_for('app_routes.mis_reservas_recomendaciones') }}" class="btn">Mis Reservas y Recomendaciones</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccionar Vuelo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='gestion_asientos.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Seleccionar Vuelo para Gestionar Asientos</h1>
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>ID Vuelo</th>
+                    <th>Operador</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vuelo in vuelos %}
+                <tr>
+                    <td>{{ vuelo[0] }}</td>
+                    <td>{{ vuelo[1] }}</td>
+                    <td>
+                        <a href="{{ url_for('app_routes.gestion_asientos', vuelo_id=vuelo[0]) }}" class="btn btn-primary">
+                            Gestionar Asientos
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('app_routes.admin_dashboard') }}" class="btn-back">Volver al Panel de Administración</a>
+    </div>
+</body>
+</html>

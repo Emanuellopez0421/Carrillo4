@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago del Vuelo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='pago_recomendacion.css') }}">
+</head>
+<body>
+    <div class="payment-card">
+        <div class="payment-header">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='logo.jpeg') }}" alt="Logo Aerolínea Carrillo">
+            </div>
+            <div class="header-info">
+                <h1 class="title">Aerolínea Carrillo</h1>
+                <p class="subtitle">¡El siguiente paso hacia tu próximo destino!</p>
+            </div>
+        </div>
+
+        <div class="payment-details">
+            <h2 class="details-title">Detalles del Vuelo</h2>
+            <p><strong>Vuelo ID:</strong> {{ reserva['vuelo_id'] }}</p>
+            <p><strong>Salida:</strong> {{ reserva['salida'] }}</p>
+            <p><strong>Destino:</strong> {{ reserva['llegada'] }}</p>
+            <p><strong>Total a Pagar:</strong> ${{ reserva['precio'] }}</p>
+        </div>
+
+        <div class="payment-form">
+            <form method="POST">
+                <div class="form-group">
+                    <label for="metodo_pago">Método de Pago:</label>
+                    <select id="metodo_pago" name="metodo_pago" class="form-control" required>
+                        <option value="tarjeta_credito">Tarjeta de Crédito</option>
+                        <option value="tarjeta_debito">Tarjeta de Débito</option>
+                        <option value="paypal">PayPal</option>
+                    </select>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Pagar</button>
+                    <a href="{{ url_for('app_routes.ver_recomendaciones') }}" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+
+        <div class="thank-you">
+            <p>¡Gracias por confiar en nosotros! Tu próxima aventura está a un clic de distancia.</p>
+        </div>
+    </div>
+</body>
+</html>

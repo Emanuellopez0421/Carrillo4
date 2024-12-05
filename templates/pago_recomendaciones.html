@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagar Reserva</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='pago_estilos.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Pagar Reserva</h1>
+        <h3>Tarjetas Aceptadas</h3>
+        <div class="tarjetas">
+            <img src="{{ url_for('static', filename='visa.png') }}" alt="Visa">
+            <img src="{{ url_for('static', filename='mastercard.png') }}" alt="MasterCard">
+            <img src="{{ url_for('static', filename='amex.png') }}" alt="American Express">
+        </div>
+
+        <div class="card">
+            <h2>Detalles de la Reserva</h2>
+            <p><strong>Reserva ID:</strong> {{ reserva.reserva_id }}</p>
+            <p><strong>Monto a Pagar:</strong> ${{ reserva.precio }}</p>
+
+            <form method="POST">
+                <label for="metodo_pago">Método de Pago:</label>
+                <select id="metodo_pago" name="metodo_pago" required>
+                    <option value="" disabled selected>Seleccione un método de pago</option>
+                    <option value="tarjeta_credito">Tarjeta de Crédito</option>
+                    <option value="tarjeta_debito">Tarjeta de Débito</option>
+                    <option value="transferencia">Transferencia Bancaria</option>
+                    <option value="paypal">PayPal</option>
+                </select>
+                <button type="submit" class="btn">Pagar</button>
+            </form>
+
+            <div class="actions">
+                <a href="{{ url_for('app_routes.ver_recomendaciones') }}" class="btn">Cancelar</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

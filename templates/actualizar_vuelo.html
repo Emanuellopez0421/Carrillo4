@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Vuelo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='actualizar.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Actualizar Vuelo</h1>
+        <form method="POST" action="{{ url_for('app_routes.actualizar_vuelo', vuelo_id=vuelo[1]) }}">
+            <!-- Operador -->
+            <div class="form-group">
+                <label for="operador">Operador</label>
+                <input type="text" class="form-control" id="operador" name="operador" value="{{ vuelo[2] }}" required>
+            </div>
+
+            <!-- Precio -->
+            <div class="form-group">
+                <label for="precio">Precio</label>
+                <input type="number" class="form-control" id="precio" name="precio" value="{{ vuelo[3] }}" min="1" step="0.01" required>
+            </div>
+
+            <!-- Salida -->
+            <div class="form-group">
+                <label for="salida">Salida</label>
+                <input type="text" class="form-control" id="salida" name="salida" value="{{ vuelo[4] }}" required>
+            </div>
+
+            <!-- Fecha y hora de salida -->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="fecha_salida">Fecha de Salida</label>
+                    <input type="date" class="form-control" id="fecha_salida" name="fecha_salida" value="{{ vuelo[5] }}" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="hora_salida">Hora de Salida</label>
+                    <input type="time" class="form-control" id="hora_salida" name="hora_salida" value="{{ vuelo[6] }}" required>
+                </div>
+            </div>
+
+            <!-- Llegada -->
+            <div class="form-group">
+                <label for="llegada">Llegada</label>
+                <input type="text" class="form-control" id="llegada" name="llegada" value="{{ vuelo[7] }}" required>
+            </div>
+
+            <!-- Fecha y hora de llegada -->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="fecha_llegada">Fecha de Llegada</label>
+                    <input type="date" class="form-control" id="fecha_llegada" name="fecha_llegada" value="{{ vuelo[8] }}" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="hora_llegada">Hora de Llegada</label>
+                    <input type="time" class="form-control" id="hora_llegada" name="hora_llegada" value="{{ vuelo[9] }}" required>
+                </div>
+            </div>
+
+            <!-- Tipo y modo de vuelo -->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="tipo_vuelo">Tipo de Vuelo</label>
+                    <select class="form-control" id="tipo_vuelo" name="tipo_vuelo" required>
+                        <option value="ida" {% if vuelo[10] == "ida" %}selected{% endif %}>Ida</option>
+                        <option value="redondo" {% if vuelo[10] == "redondo" %}selected{% endif %}>Redondo</option>
+                        <option value="directo" {% if vuelo[10] == "directo" %}selected{% endif %}>Directo</option>
+                        <option value="escalas" {% if vuelo[10] == "escalas" %}selected{% endif %}>Con Escalas</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="modo_vuelo">Modo de Vuelo</label>
+                    <select class="form-control" id="modo_vuelo" name="modo_vuelo" required>
+                        <option value="comercial" {% if vuelo[11] == "comercial" %}selected{% endif %}>Comercial</option>
+                        <option value="privado" {% if vuelo[11] == "privado" %}selected{% endif %}>Privado</option>
+                        <option value="publico" {% if vuelo[11] == "publico" %}selected{% endif %}>Público</option>
+                        <option value="ejecutivo" {% if vuelo[11] == "ejecutivo" %}selected{% endif %}>Ejecutivo</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Matrícula y asientos -->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="matricula">Matrícula</label>
+                    <input type="text" class="form-control" id="matricula" name="matricula" value="{{ vuelo[12] }}" maxlength="10" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="asientos_disponibles">Asientos Disponibles</label>
+                    <input type="number" class="form-control" id="asientos_disponibles" name="asientos_disponibles" value="{{ vuelo[13] }}" min="1" required>
+                </div>
+            </div>
+
+            <!-- Botones de acción -->
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+            <a href="{{ url_for('app_routes.admin_dashboard') }}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vuelos Disponibles</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='vuelos_disponibles.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Vuelos Disponibles</h1>
+        
+        {% if vuelos %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Salida</th>
+                    <th>Llegada</th>
+                    <th>Fecha/Hora Salida</th>
+                    <th>Fecha/Hora Llegada</th>
+                    <th>Precio</th>
+                    <th>Tipo de Vuelo</th>
+                    <th>Modo de Vuelo</th>
+                    <th>Seleccionar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vuelo in vuelos %}
+                <tr>
+                    <td>{{ vuelo.salida }}</td>
+                    <td>{{ vuelo.llegada }}</td>
+                    <td>{{ vuelo.fecha_salida }} {{ vuelo.hora_salida }}</td>
+                    <td>{{ vuelo.fecha_llegada }} {{ vuelo.hora_llegada }}</td>
+                    <td>{{ vuelo.precio }}</td>
+                    <td>{{ vuelo.tipo_vuelo }}</td>
+                    <td>{{ vuelo.modo_vuelo }}</td>
+                    <td>
+                        <a href="{{ url_for('app_routes.seleccionar_asientos', vuelo_id=vuelo.vuelo_id) }}" class="btn btn-primary btn-sm">Seleccionar Asiento</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="alert alert-warning text-center mt-4" role="alert">
+            <h4 class="alert-heading">No se encontraron vuelos disponibles</h4>
+            <p>Lo sentimos, no hay vuelos que coincidan con los criterios de búsqueda.</p>
+            <hr>
+            <a href="{{ url_for('app_routes.buscar_vuelo') }}" class="btn btn-secondary">Realizar Nueva Búsqueda</a>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

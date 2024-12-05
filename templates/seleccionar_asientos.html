@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccionar Asiento</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='asiento.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Seleccionar Asiento para el Vuelo {{ vuelo_id }}</h1>
+
+        <!-- Mapa de asientos -->
+        <form method="POST" action="{{ url_for('app_routes.seleccionar_asientos', vuelo_id=vuelo_id) }}">
+            <div class="seat-map">
+                {% for fila in asientos %}
+                <div class="row">
+                    {% for asiento in fila %}
+                    <div 
+                        class="seat {% if asiento.estado == 'ocupado' %}occupied{% else %}available{% endif %}" 
+                        data-seat-id="{{ asiento.id }}">
+                        {% if asiento.estado == 'disponible' %}
+                        <input type="radio" name="asiento_id" value="{{ asiento.id }}" id="seat-{{ asiento.id }}">
+                        <label for="seat-{{ asiento.id }}">{{ asiento.numero }}</label>
+                        {% else %}
+                        <span>{{ asiento.numero }}</span>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="btn-confirm">Confirmar Selección</button>
+        </form>
+        <a href="{{ url_for('app_routes.cliente_dashboard') }}" class="btn-back">Regresar al Panel</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_dashboard.css') }}">
+</head>
+<body>
+    <!-- Contenedor Principal -->
+    <div class="admin-container">
+        <!-- Barra Lateral -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='logo.jpeg') }}" alt="Logo Aerolínea">
+            </div>
+            <h2 class="text-center">Panel Admin</h2>
+            <ul class="nav-menu">
+                <li><a href="{{ url_for('app_routes.admin_vuelos') }}">Vuelos Registrados</a></li>
+                <li><a href="{{ url_for('app_routes.admin_reservas') }}">Reservas Pagadas</a></li>
+                <li><a href="{{ url_for('app_routes.seleccionar_vuelo_asientos') }}">Gestionar Asientos</a></li>
+                <li><a href="{{ url_for('app_routes.reporte_ganancias') }}">Reporte de Ganancias</a></li>
+                <li><a href="{{ url_for('app_routes.estadisticas_pago') }}">Estadísticas de Métodos de Pago</a></li>
+                <li><a href="{{ url_for('app_routes.crear_recomendacion') }}">Crear Recomendación</a></li>
+                <li><a href="{{ url_for('app_routes.recomendaciones') }}">Ver Recomendaciones</a></li>
+                <li><a href="{{ url_for('app_routes.crear_promocion') }}">Crear Promoción</a></li>
+                <li><a href="{{ url_for('app_routes.listar_promociones') }}">Administrar Promociones</a></li>
+                <li><a href="{{ url_for('app_routes.crear_vuelo') }}">Crear Nuevo Vuelo</a></li>
+            </ul>
+        </aside>
+
+        <!-- Contenido Principal -->
+        <div class="content">
+            <header class="header">
+                <h1>Bienvenido al Panel de Administración</h1>
+                <a href="{{ url_for('app_routes.cerrar_sesion') }}" class="btn-logout">Cerrar Sesión</a>
+            </header>
+
+            <main class="dashboard">
+                <h2>Estadísticas Generales</h2>
+                <div class="stats">
+                    <div class="stat-card">
+                        <h3>Total de Vuelos</h3>
+                        <p>{{ total_vuelos }}</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total de Reservas</h3>
+                        <p>{{ total_reservas }}</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Ganancias Totales</h3>
+                        <p>${{ ganancias_totales }}</p>
+                    </div>
+                </div>
+
+                <!-- Imagen en el Centro -->
+                <div class="center-image">
+                    <img src="{{ url_for('static', filename='mapa.jpg') }}" alt="Avión Aerolínea">
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

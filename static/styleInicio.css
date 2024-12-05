@@ -1,0 +1,115 @@
+/* Establecer fondo y efectos para la página */
+body {
+    background-image: url('static/usuario.png'); /* Imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    color: #ffffff;
+}
+
+/* Contenedor principal para centrar el formulario */
+.container-fluid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4); /* Capa oscura para resaltar el formulario */
+}
+
+/* Contenedor del formulario */
+.login-container {
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco translúcido */
+    padding: 40px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+/* Título con nombre de la aerolínea */
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #7db9b8; /* Color verde pastel suave */
+    font-weight: bold;
+}
+
+.brand-name {
+    color: #f1c6a0; /* Color naranja pastel suave */
+}
+
+/* Estilo para el mensaje de alerta */
+.alert {
+    border-radius: 10px;
+}
+
+.form-group label {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #b2b2b2; /* Gris suave para los labels */
+}
+
+/* Estilo de los campos de entrada */
+.form-control {
+    background-color: #f0f8ff; /* Azul claro pastel */
+    border: 2px solid #a3c9c8; /* Azul suave pastel */
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-control:focus {
+    border: 2px solid #f1c6a0; /* Naranja pastel para el foco */
+    box-shadow: 0 0 5px rgba(255, 152, 0, 0.4);
+}
+
+/* Botón de inicio de sesión */
+.btn-primary {
+    background-color: #a3c9c8; /* Azul pastel suave */
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #7db9b8; /* Azul pastel un poco más oscuro */
+}
+
+/* Pie de página */
+.footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    color: #7db9b8;
+    font-size: 0.9rem;
+}
+
+/* Efectos de animación para una experiencia dinámica */
+.login-container {
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Animación de aparición */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fondo de la página */
+body {
+    background: linear-gradient(135deg, #a3c9c8 0%, #f1c6a0 100%); /* Fondo degradado pastel */
+}

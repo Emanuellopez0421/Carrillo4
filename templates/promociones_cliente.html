@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promociones</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='promociones_cliente.css') }}">
+</head>
+<body>
+    <div class="container py-5">
+        <h1 class="text-center text-primary mb-4">Promociones Disponibles</h1>
+
+        {% if promociones %}
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Descripción</th>
+                    <th>Descuento</th>
+                    <th>Fecha de Inicio</th>
+                    <th>Fecha de Fin</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for promo in promociones %}
+                <tr>
+                    <td>{{ promo['codigo'] }}</td>
+                    <td>{{ promo['descripcion'] }}</td>
+                    <td>{{ promo['descuento'] }}%</td>
+                    <td>{{ promo['fecha_inicio'] }}</td>
+                    <td>{{ promo['fecha_fin'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p class="no-data">No hay promociones disponibles en este momento.</p>
+        {% endif %}
+
+        <div class="text-center mt-4">
+            <a href="{{ url_for('app_routes.cliente_dashboard') }}" class="btn btn-secondary">Regresar al Panel</a>
+        </div>
+    </div>
+</body>
+</html>

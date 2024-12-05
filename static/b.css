@@ -1,0 +1,123 @@
+body {
+    background-color: #f3f3f3;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.ticket {
+    max-width: 700px;
+    margin: 50px auto;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    padding: 20px;
+}
+
+.ticket-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #f1f1f1;
+    padding-bottom: 15px;
+}
+
+.ticket-header .logo img {
+    height: 60px;
+}
+
+.ticket-header .header-info {
+    text-align: left;
+    margin-left: 15px;
+}
+
+.ticket-header .title {
+    font-size: 24px;
+    color: #4a90e2;
+    margin: 0;
+}
+
+.ticket-header .flight-tagline {
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+.ticket-body {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    border-bottom: 2px solid #f1f1f1;
+    padding-bottom: 15px;
+}
+
+.ticket-body .flight-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.ticket-body .info-block {
+    width: 30%;
+    text-align: left;
+}
+
+.ticket-body p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.ticket-footer {
+    text-align: center;
+    padding: 15px 0;
+}
+
+.ticket-footer .barcode-section {
+    margin-bottom: 15px;
+}
+
+.ticket-footer .barcode {
+    height: 50px;
+}
+
+.ticket-footer .thank-you-section {
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+.ticket-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.ticket-actions .btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.ticket-actions .btn-print {
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+    transition: all 0.3s;
+}
+
+.ticket-actions .btn-print:hover {
+    background-color: #357abd;
+}
+
+.ticket-actions .btn-cancel {
+    background-color: #bdc3c7;
+    color: #fff;
+    border: none;
+    transition: all 0.3s;
+}
+
+.ticket-actions .btn-cancel:hover {
+    background-color: #95a5a6;
+}

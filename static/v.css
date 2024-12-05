@@ -1,0 +1,162 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7fc;
+    color: #333;
+}
+
+/* Main Container */
+.container {
+    max-width: 95%;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #4a90e2;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/* Section Title */
+h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Table Styles */
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 5px;
+    font-size: 0.8rem; /* Reduced font size */
+}
+
+.custom-table thead {
+    background: linear-gradient(to right, #4a90e2, #50c9c3);
+    color: white;
+    text-transform: uppercase;
+}
+
+.custom-table th, .custom-table td {
+    padding: 8px 10px; /* Reduced padding */
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.custom-table th {
+    font-size: 0.8rem; /* Smaller text */
+    letter-spacing: 0.5px;
+    font-weight: bold;
+}
+
+.custom-table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.custom-table tbody tr:hover {
+    background-color: #e3f2fd;
+    transition: background-color 0.3s;
+}
+
+.custom-table td {
+    font-size: 0.8rem; /* Smaller text */
+    color: #555;
+}
+
+/* Button Styles */
+.btn-edit, .btn-delete {
+    display: inline-block;
+    padding: 5px 8px; /* Smaller buttons */
+    font-size: 0.75rem; /* Smaller text */
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.btn-edit {
+    background-color: #4a90e2;
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: #357abd;
+    cursor: pointer;
+}
+
+.btn-delete {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+}
+
+.btn-delete:hover {
+    background-color: #c9302c;
+    cursor: pointer;
+}
+
+/* Column Highlight */
+.custom-table td:nth-child(4),
+.custom-table td:nth-child(7),
+.custom-table td:nth-child(10) {
+    color: #50c9c3;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 8px;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    .custom-table th, .custom-table td {
+        font-size: 0.7rem;
+        padding: 5px;
+    }
+
+    .btn-edit, .btn-delete {
+        padding: 4px 6px;
+        font-size: 0.65rem;
+    }
+}
+/* Botón para regresar al panel principal */
+.back-button {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.btn-back {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    color: white;
+    background-color: #4a90e2;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-back:hover {
+    background-color: #357abd;
+    cursor: pointer;
+}

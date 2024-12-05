@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a Nuestra Aerolínea</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bienvenida.css') }}">
+</head>
+<body>
+    <header class="bg-primary text-white text-center py-5">
+        <img src="{{ url_for('static', filename='logo1.png') }}" alt="Logo Aerolínea Carrillo" class="img-fluid mb-4" style="max-width: 150px;">
+        <h1 class="display-4">¡Bienvenido a la Aerolínea Carrillo!</h1>
+        <p class="lead">Tu experiencia de vuelo comienza aquí</p>
+        <a href="{{ url_for('app_routes.cliente_dashboard') }}" class="btn btn-warning btn-lg mt-3">Ir al Panel de Cliente</a>
+    </header>
+
+    <section class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{ url_for('static', filename='promo.jpg') }}" alt="Promociones" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-md-6 d-flex flex-column justify-content-center">
+                <h2 class="text-primary">Promociones Exclusivas</h2>
+                <p>Disfruta de descuentos únicos en vuelos seleccionados. No te pierdas la oportunidad de explorar el mundo con tarifas reducidas.</p>
+                <a href="{{ url_for('app_routes.mostrar_promociones_cliente') }}" class="btn btn-info">Ver Promociones</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mt-5">
+        <h2 class="text-center text-secondary mb-4">Nuestros Destinos Más Populares</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <img src="{{ url_for('static', filename='destino1.jpg') }}" class="card-img-top" alt="Destino 1">
+                    <div class="card-body">
+                        <h5 class="card-title">París, Francia</h5>
+                        <p class="card-text">Vuela a la ciudad del amor con descuentos especiales. Vive una experiencia inolvidable.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <img src="{{ url_for('static', filename='destino2.jpg') }}" class="card-img-top" alt="Destino 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Nueva York, EE.UU.</h5>
+                        <p class="card-text">Explora la Gran Manzana con las mejores tarifas. ¡Reserva ahora!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <img src="{{ url_for('static', filename='destino3.jpg') }}" class="card-img-top" alt="Destino 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Tokio, Japón</h5>
+                        <p class="card-text">Descubre la magia de Japón con precios que te encantarán.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <p>&copy; 2024 Aerolínea Carrillo. Todos los derechos reservados.</p>
+        <p>Conéctate con nosotros: <a href="#" class="text-warning">Facebook</a> | <a href="#" class="text-warning">Instagram</a></p>
+    </footer>
+</body>
+</html>

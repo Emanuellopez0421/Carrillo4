@@ -1,0 +1,140 @@
+/* General */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; /* Fondo claro y suave */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.2em;
+    color: #5a9ecf; /* Azul pastel */
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #ffa69e; /* Coral pastel */
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+
+/* Tarjetas aceptadas */
+.tarjetas {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.tarjetas img {
+    width: 60px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Card de detalles */
+.card {
+    padding: 20px;
+    background-color: #d8e2dc; /* Verde pastel */
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: left;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    color: #6d6875; /* Gris cálido */
+    margin-bottom: 15px;
+}
+
+/* Formulario */
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #5a9ecf;
+    box-shadow: 0 0 5px rgba(90, 158, 207, 0.5);
+}
+
+/* Botones */
+.btn-primary {
+    background-color: #ffa69e; /* Coral pastel */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #ff7f6e; /* Más oscuro al pasar el mouse */
+}
+
+.btn-secondary {
+    background-color: #f0efeb; /* Gris claro */
+    color: #6d6875; /* Gris cálido */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #e8e6e3; /* Más oscuro al pasar el mouse */
+}
+
+/* Adaptabilidad */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .tarjetas img {
+        width: 50px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .card {
+        padding: 15px;
+    }
+}

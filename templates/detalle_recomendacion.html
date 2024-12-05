@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Recomendación</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='detalle_recomendacion.css') }}">
+</head>
+<body>
+    <div class="container py-5">
+        <div class="card p-4 shadow-lg">
+            <h1 class="text-center text-primary">{{ recomendacion['titulo'] }}</h1>
+            <!-- Ruta de la imagen desde uploads/images -->
+            <p class="text-muted text-center">{{ recomendacion['descripcion'] }}</p>
+            <div class="details mt-4">
+                <p><strong>Destino:</strong> {{ recomendacion['llegada'] }}</p>
+                <p><strong>Fecha de Salida:</strong> {{ recomendacion['fecha_salida'] }}</p>
+                <p><strong>Hora de Salida:</strong> {{ recomendacion['hora_salida'] }}</p>
+                <p><strong>Fecha de Llegada:</strong> {{ recomendacion['fecha_llegada'] }}</p>
+                <p><strong>Hora de Llegada:</strong> {{ recomendacion['hora_llegada'] }}</p>
+                <p><strong>Precio:</strong> ${{ recomendacion['precio'] }}</p>
+            </div>
+
+            <form method="POST" class="mt-4">
+                <!-- Lugar de Salida -->
+                <div class="form-group">
+                    <label for="lugar_salida">Lugar de Salida:</label>
+                    <input type="text" id="lugar_salida" name="lugar_salida" class="form-control" placeholder="Ejemplo: Corea" required>
+                </div>
+                <!-- Selección de Asiento -->
+                <div class="form-group">
+                    <label for="asiento_id">Selecciona tu Asiento:</label>
+                    <input type="number" id="asiento_id" name="asiento_id" class="form-control" required>
+                </div>
+                <!-- Botones -->
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary px-5">Reservar</button>
+                    <a href="{{ url_for('app_routes.ver_recomendaciones') }}" class="btn btn-secondary px-5">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

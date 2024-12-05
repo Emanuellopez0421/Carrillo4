@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas de Métodos de Pago</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='estadisticas.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Botón de Regresar -->
+        <a href="{{ url_for('app_routes.admin_dashboard') }}" class="btn-back">⬅ Regresar al Panel</a>
+        
+        <h1 class="text-center">Estadísticas de Métodos de Pago</h1>
+        
+        <table class="table table-bordered table-hover mt-4">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Método de Pago</th>
+                    <th>Cantidad de Transacciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for metodo, cantidad in estadisticas %}
+                <tr>
+                    <td>{{ metodo }}</td>
+                    <td>{{ cantidad }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+

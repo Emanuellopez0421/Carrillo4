@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Pago</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='confirmacion_pago.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Confirmación de Pago</h1>
+        <p><strong>Reserva ID:</strong> {{ ticket.reserva_id }}</p>
+        <p><strong>Cliente:</strong> {{ ticket.nombre_cliente }}</p>
+        <p><strong>Salida:</strong> {{ ticket.salida }}</p>
+        <p><strong>Llegada:</strong> {{ ticket.llegada }}</p>
+        <p><strong>Fecha y Hora de Salida:</strong> {{ ticket.fecha_salida }} {{ ticket.hora_salida }}</p>
+        <p><strong>Fecha y Hora de Llegada:</strong> {{ ticket.fecha_llegada }} {{ ticket.hora_llegada }}</p>
+        <p><strong>Precio:</strong> ${{ ticket.precio }}</p>
+
+        <div class="actions">
+            <!-- Botón para confirmar pago -->
+            <form action="{{ url_for('app_routes.confirmacion_pago_recomendacion', reserva_id=ticket.reserva_id) }}" method="POST">
+                <button type="submit" class="btn">Confirmar Pago</button>
+            </form>
+            
+            <!-- Botones de navegación -->
+            <a href="{{ url_for('app_routes.ver_recomendaciones') }}" class="btn">Regresar</a>
+            <a href="{{ url_for('app_routes.mis_reservas_recomendaciones') }}" class="btn">Mis Reservas</a>
+        </div>
+    </div>
+</body>
+</html>

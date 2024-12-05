@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boleto de Vuelo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='boleto.css') }}">
+    <script>
+        function imprimirBoleto() {
+            const actions = document.querySelector('.ticket-actions');
+            actions.style.display = 'none'; 
+            window.print();
+            actions.style.display = 'flex'; 
+        }
+    </script>
+</head>
+<body>
+    <div class="ticket">
+        <div class="ticket-header">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='logo.jpeg') }}" alt="Logo Aerolínea Carrillo">
+            </div>
+            <div class="header-info">
+                <h1 class="title">Aerolínea Carrillo</h1>
+                <p class="flight-tagline">¡Conectando destinos, creando momentos inolvidables!</p>
+            </div>
+        </div>
+
+        <div class="ticket-body">
+            <div class="flight-info">
+                <p><strong>Pasajero:</strong> {{ ticket.nombre_cliente }}</p>
+                <p><strong>Vuelo ID:</strong> {{ ticket.reserva_id }}</p>
+                <p><strong>Asiento:</strong> {{ ticket.numero_asiento }}</p>
+                <p><strong>Salida:</strong> {{ ticket.salida }}</p>
+                <p><strong>Destino:</strong> {{ ticket.llegada }}</p>
+                <p><strong>Hora Salida:</strong> {{ ticket.hora_salida }}</p>
+                <p><strong>Fecha Salida:</strong> {{ ticket.fecha_salida }}</p>
+                <p><strong>Hora Llegada:</strong> {{ ticket.hora_llegada }}</p>
+                <p><strong>Precio:</strong> ${{ ticket.precio }}</p>
+            </div>
+        </div>
+
+        <div class="ticket-footer">
+            <div class="barcode-section">
+                <p class="route">{{ ticket.salida }} → {{ ticket.llegada }}</p>
+                <img src="{{ url_for('static', filename='barcode.png') }}" alt="Código de Barras" class="barcode">
+            </div>
+            <div class="thank-you-section">
+                <p>¡Gracias por elegir Aerolínea Carrillo!</p>
+                <p class="small-text">Viaja más. Explora más. Vuelve siempre con nosotros.</p>
+            </div>
+        </div>
+
+        <div class="ticket-actions">
+            <button onclick="imprimirBoleto()" class="btn btn-primary">Imprimir Boleto</button>
+            <a href="{{ url_for('app_routes.bienvenida_cliente') }}" class="btn btn-secondary">Volver al Inicio</a>
+        </div>
+    </div>
+</body>
+</html>

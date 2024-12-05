@@ -1,0 +1,117 @@
+/* General */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Títulos */
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #f4d03f;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.card h3 {
+    color: #f39c12;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Texto dentro de la tarjeta */
+.card p {
+    margin: 8px 0;
+    font-size: 1.1rem;
+    color: #dcdcdc;
+}
+
+.card p strong {
+    color: #f4d03f;
+}
+
+/* Botones */
+form button,
+form a {
+    display: inline-block;
+    padding: 12px 20px;
+    margin-top: 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Botón Confirmar */
+form button {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+form button:hover {
+    background-color: #2ecc71;
+    transform: scale(1.1);
+    box-shadow: 0 8px 15px rgba(0, 255, 127, 0.3);
+}
+
+/* Botón Cancelar */
+form a {
+    background-color: #c0392b;
+    color: white;
+    margin-left: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+form a:hover {
+    background-color: #e74c3c;
+    transform: scale(1.1);
+    box-shadow: 0 8px 15px rgba(255, 0, 0, 0.3);
+}
+
+/* Tarjeta */
+.card {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsividad */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .card p {
+        font-size: 1rem;
+    }
+
+    form button,
+    form a {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+    }
+}

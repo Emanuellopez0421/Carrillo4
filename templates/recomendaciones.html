@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recomendaciones</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='recomendaciones1.css') }}">
+</head>
+<body>
+    <div class="container py-5">
+        <h1 class="text-center text-primary mb-4">Recomendaciones</h1>
+
+        {% if recomendaciones %}
+        <div class="row">
+            {% for recomendacion in recomendaciones %}
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm">
+                    <!-- Imagen -->
+                    <img src="{{ url_for('static', filename=recomendacion[3]) }}" 
+                         class="card-img-top" 
+                         alt="Imagen de la recomendación" 
+                         onerror="this.onerror=null; this.src='{{ url_for('static', filename='images/default.jpg') }}';">
+                    <!-- Contenido -->
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">{{ recomendacion[1] }}</h5>
+                        <p class="card-text">{{ recomendacion[2] }}</p>
+
+                        <!-- Botones de acciones -->
+                        <div class="d-flex justify-content-between">
+                            <!-- Botón de actualizar -->
+                            <a href="{{ url_for('app_routes.actualizar_recomendacion', id=recomendacion[0]) }}" class="btn btn-warning btn-sm">Actualizar</a>
+
+                            <!-- Botón de eliminar -->
+                            <form method="POST" action="{{ url_for('app_routes.eliminar_recomendacion', id=recomendacion[0]) }}">
+                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="alert alert-warning text-center">
+            No hay recomendaciones disponibles.
+        </div>
+        {% endif %}
+
+        <!-- Botón de regresar -->
+        <div class="text-center mt-4">
+            <a href="#" onclick="window.history.back();" class="btn btn-secondary">Regresar</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

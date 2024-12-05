@@ -1,0 +1,112 @@
+/* Fondo general */
+body {
+    background: linear-gradient(135deg, #74ebd5, #acb6e5); /* Degradado azul y verde */
+    color: #34495e; /* Gris oscuro */
+    font-family: 'Poppins', sans-serif; /* Tipografía moderna */
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Título principal */
+h1 {
+    color: #2c3e50; /* Azul oscuro */
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra en el texto */
+}
+
+/* Tarjetas de Recomendaciones */
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #ffffff;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Efecto de elevación */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen en la tarjeta */
+.card img {
+    height: 200px;
+    object-fit: cover; /* Ajustar imagen */
+    border-bottom: 3px solid #74ebd5; /* Borde decorativo */
+}
+
+/* Contenido de la tarjeta */
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    color: #007b5e; /* Verde vibrante */
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.card-text {
+    color: #6c757d; /* Gris tenue */
+    font-size: 0.95rem;
+    text-align: justify;
+    line-height: 1.6;
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    font-weight: bold;
+    text-align: center;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-warning {
+    background-color: #f39c12; /* Naranja vibrante */
+    border: none;
+    color: #ffffff;
+}
+
+.btn-warning:hover {
+    background-color: #d68910;
+    transform: scale(1.05); /* Ligero aumento al pasar el mouse */
+}
+
+.btn-danger {
+    background-color: #e74c3c; /* Rojo */
+    border: none;
+    color: #ffffff;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem; /* Reducir tamaño del título */
+    }
+
+    .card img {
+        height: 150px; /* Reducir altura de las imágenes */
+    }
+}

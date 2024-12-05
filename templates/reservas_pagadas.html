@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas Pagadas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_dashboard.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Reservas Pagadas</h1>
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID Reserva</th>
+                    <th>Nombre del Cliente</th>
+                    <th>Salida</th>
+                    <th>Llegada</th>
+                    <th>Fecha de Salida</th>
+                    <th>Hora de Salida</th>
+                    <th>Fecha de Llegada</th>
+                    <th>Hora de Llegada</th>
+                    <th>Modo de Vuelo</th>
+                    <th>Precio</th>
+                    <th>Fecha de Pago</th>
+                    <th>Estado de Pago</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reserva in reservas_pagadas %}
+                <tr>
+                    <td>{{ reserva[0] }}</td>
+                    <td>{{ reserva[1] }}</td>
+                    <td>{{ reserva[2] }}</td>
+                    <td>{{ reserva[3] }}</td>
+                    <td>{{ reserva[4] }}</td>
+                    <td>{{ reserva[5] }}</td>
+                    <td>{{ reserva[6] }}</td>
+                    <td>{{ reserva[7] }}</td>
+                    <td>{{ reserva[8] }}</td>
+                    <td>${{ reserva[9] }}</td>
+                    <td>{{ reserva[10] }}</td>
+                    <td>{{ reserva[11] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

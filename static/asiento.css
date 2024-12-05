@@ -1,0 +1,125 @@
+/* Fondo y diseño general */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #d4fc79, #96e6a1); /* Gradiente llamativo verde pastel */
+    color: #333;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Título */
+h1 {
+    font-size: 2em;
+    color: #2d4059;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+/* Mapa de asientos */
+.seat-map {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Fila de asientos */
+.row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Estilo de los asientos */
+.seat {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    border-radius: 8px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Asientos disponibles */
+.seat.available {
+    background: #4caf50; /* Verde pastel */
+    box-shadow: 0 4px 8px rgba(0, 255, 0, 0.2);
+}
+
+.seat.available:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 255, 0, 0.4);
+}
+
+/* Asientos ocupados */
+.seat.occupied {
+    background: #e74c3c; /* Rojo pastel */
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Input radio oculto */
+.seat input[type="radio"] {
+    display: none;
+}
+
+/* Etiquetas de asientos */
+.seat label {
+    cursor: pointer;
+}
+
+/* Botón confirmar selección */
+.btn-confirm {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background: #3498db; /* Azul pastel */
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.2);
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.btn-confirm:hover {
+    background: #2980b9; /* Azul más oscuro */
+    box-shadow: 0 6px 12px rgba(41, 128, 185, 0.4);
+}
+
+/* Botón regresar */
+.btn-back {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #555;
+    background: #f1c40f; /* Amarillo pastel */
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.btn-back:hover {
+    background: #f39c12;
+    transform: scale(1.05);
+}
